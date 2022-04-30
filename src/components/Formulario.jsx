@@ -8,7 +8,7 @@ const Formulario = () => {
     categoria: "",
   });
   const { categorias } = useContext(CategoriasContext);
-  const { setSearch } = useContext(RecetasContext);
+  const { setSearch, setConsultar } = useContext(RecetasContext);
 
   const obtenerDatosReceta = (e) => {
     setBusqueda({
@@ -22,6 +22,7 @@ const Formulario = () => {
       onSubmit={(e) => {
         e.preventDefault();
         setSearch(busqueda);
+        setConsultar(true);
       }}
       className="col-12"
     >
