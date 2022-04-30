@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ModalContext } from "../context/ModalContext";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
 const style = {
@@ -14,6 +13,7 @@ const style = {
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
+  scroll: { maxHeight: "500px", overflowY: "scroll", overflowX: "none" },
 };
 
 const Receta = ({ receta }) => {
@@ -31,6 +31,22 @@ const Receta = ({ receta }) => {
     receta: recetaProvider,
     setReceta,
   } = useContext(ModalContext);
+
+  //mostrar ingredientes y cantides
+  const mostrarIngredientes = (informacion) => {
+    let ingredientes = [];
+
+    for (let i = 1; i < 16; i++) {
+      if (informacion[`strIngredient${i}`]) {
+        ingredientes.push(
+          <li>
+            {informacion[`strIngredient${i}`]}: {informacion[`strMeasure${i}`]}
+          </li>
+        );
+      }
+    }
+    return ingredientes;
+  };
 
   return (
     <div className="col-md-4 mb-3">
@@ -73,6 +89,8 @@ const Receta = ({ receta }) => {
                   alt=""
                 />
               </p>
+              <h3>Ingredientes y cantidades</h3>
+              <ul>{mostrarIngredientes(recetaProvider)}</ul>
             </Box>
           </Modal>
         </div>
