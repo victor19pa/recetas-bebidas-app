@@ -1,5 +1,5 @@
 import React from "react";
-import { Formulario, Header } from "./components";
+import { Formulario, Header, ListaRecetas } from "./components";
 import CategoriasProvider from "./context/CategoriasContext";
 import RecetasProvider from "./context/RecetasContext";
 
@@ -12,6 +12,7 @@ const App = () => {
           <div className="row">
             <Formulario />
           </div>
+          <ListaRecetas />
         </div>
       </RecetasProvider>
     </CategoriasProvider>
